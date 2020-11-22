@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/settings">Settings</a></li>
+</ul>
+
+<a href="http://google.com.tr" target="_blank" >Google Open</a>
+
+<h1> Welcome Home </h1>
+<h2 th:text="${title}"></h2>
+<h3 th:text="${rd}"></h3>
+
+<p>Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır.</p>
+
+<form action="/userRegister" method="post" >
+
+	<input name="name" type="text" placeholder="Name" />
+	<input name="surname" type="text" placeholder="Surname" />
+	<input name="password" type="password" placeholder="Password" />
+	<input name="submit" type="submit" value="Send" />
+	
+</form>
+<br />
+<img th:src="@{img/image.jpg}" width="300" />
+<hr />
+<img src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg" width="300" />
+
+
+<table>
+	<thead>
+		<tr>
+			<td>Id</td>
+			<td>Name</td>
+			<td>Surname</td>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>10</td>
+			<td>ALi</td>
+			<td>Bilmem</td>
+		</tr>
+	</tbody>
+	
+</table>
+
+<br />
+<br />
+<br />
+
+</body>
+</html>
