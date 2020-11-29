@@ -19,7 +19,7 @@ public class HomeController {
 		userList();
 	}
 	
-	@GetMapping("")
+	@GetMapping("/home")
 	public String home( Model model ) {
 		model.addAttribute("title", "Hello Spring");
 		model.addAttribute("number", 20);
@@ -61,7 +61,7 @@ public class HomeController {
 	public String userAdd( User us ) {
 		System.out.println("Age : " + us.getAge());
 		ls.add(us);
-		return "redirect:/";
+		return "redirect:/home";
 	}
 	
 
