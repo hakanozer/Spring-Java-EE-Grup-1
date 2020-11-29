@@ -1,0 +1,1 @@
+Ödevler Zip halinde değil, klasör halinde gönderilmeli ve varsa veritabanı ayrıca klasör içerisinde bulundurulmalıdır.
