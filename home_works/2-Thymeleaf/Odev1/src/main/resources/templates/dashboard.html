@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Dashboard</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<section class="my-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>User Dashboard</h1>
+						<br>
+						<div class="row">
+							<div class="col-sm-5">
+								<br>
+								<h3>Add New Note</h3>
+								<form th:action="noteAdd" th:method="post">
+
+									<div class="form-group">
+										<input name="title" required="required" type="text"
+											class="form-control" placeholder="Title">
+									</div>
+
+									<div class="form-group">
+										<input name="desc" required="required" type="text"
+											class="form-control" placeholder="Description">
+									</div>
+
+									<button type="submit" class="btn btn-success">Add</button>
+
+								</form>
+							</div>
+							<div class="col-sm-7">
+								<br>
+								<h3>Note List</h3>
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Title</th>
+											<th scope="col">Desc</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr th:each="item : ${source}">
+											<td th:text="${item.title}"></td>
+											<td th:text="${item.desc}"></td>
+
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+
+
+</body>
+</html>
