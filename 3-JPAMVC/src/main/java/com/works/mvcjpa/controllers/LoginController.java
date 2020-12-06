@@ -23,7 +23,8 @@ public class LoginController {
 	
 	@PostMapping("/userLogin")
 	public String userLogin( User user ) {
-		
+	
+		/*
 		List<User> uls = repo.findAll();
 		for (User item : uls) {
 			if ( item.getMail().equalsIgnoreCase(user.getMail()) && item.getPass().equalsIgnoreCase(user.getPass()) ) {
@@ -31,6 +32,12 @@ public class LoginController {
 			}else {
 				System.out.println("Login Fail");
 			}
+		}
+		*/
+		
+		User us = repo.userLogin(user.getMail(), user.getPass());
+		if ( us != null ) {
+			return "redirect:/dashboard";
 		}
 		
 		return "login";
