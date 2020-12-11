@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{dashboard_layout}">
+<head>
+    <title>Admin Control</title>
+    
+<script>
+	function user_alert() {
+		var answer = confirm("Are you sure?");
+		return answer;
+	}
+</script>    
+</head>
+<body>
+
+<div layout:fragment="content" class="container">
+
+	<div class="row">
+		<div class="col-sm-5" th:if="${ update == null }">
+			<h3>Note Add</h3>
+			<form action="/noteAdd" method="post" >
+				<div class="form-group">
+					<input name="title" type="text" placeholder="Title" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input name="detail" type="text" placeholder="Detail" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input name="date" type="date" placeholder="Date" class="form-control" />
+				</div>
+				<button class="btn btn-success">Save</button>
+			</form>
+		</div>
+		
+		<div class="col-sm-5" th:if="${ update != null }">
+			<h3>Note Update</h3>
+			<form action="/noteAdd" method="post" >
+				<div class="form-group">
+					<input readonly="readonly" th:value="${update.nid}" name="nid" type="text" placeholder="Nid" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input th:value="${update.title}" name="title" type="text" placeholder="Title" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input th:value="${update.detail}" name="detail" type="text" placeholder="Detail" class="form-control" />
+				</div>
+				<div class="form-group">
+					<input th:value="${update.date}" name="date" type="date" placeholder="Date" class="form-control" />
+				</div>
+				<button class="btn btn-success">Update</button>
+			</form>
+		</div>
+		
+		<div class="col-sm-7">
+			<h3>Note List</h3>
+			
+			<form action="/searchData" method="post" class="form-row">
+				<div class="form-group col-md-10">
+					<input type="search" th:value="${ searchTxt }" name="searchTxt" class="form-control" placeholder="Search...">
+				</div>
+				<div class="form-group col-md-2">
+					<button type="submit" class="btn btn-dark">Search</button>
+				</div>
+			</form>
+			
+			<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col">Nid</th>
+			      <th scope="col">Title</th>
+			      <th scope="col">Detail</th>
+			      <th scope="col">Date</th>
+			      <th scope="col">Action</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  
+			    <tr th:if="${ ls != null }" th:each="item, iter : ${ls}" >
+			      <th th:text="${ item.nid }" ></th>
+			      <td th:text="${ item.title }"></td>
+			      <td th:text="${ item.detail }"></td>
+			      <td th:text="${ item.date }"></td>
+			      <td>
+			      	<a th:href="@{'/updateNote/'+${item.nid}}" class="btn btn-info btn-sm ">Update</a>
+			      	<a onclick="return user_alert()" th:href="@{'/deleteNote/'+${item.nid}}" class="btn btn-danger btn-sm ">Delete</a>
+			      </td>
+			    </tr>
+			    
+			  </tbody>
+			</table>
+		</div>
+	</div>
+	
+    
+</div>
+
+</body>
+</html>
