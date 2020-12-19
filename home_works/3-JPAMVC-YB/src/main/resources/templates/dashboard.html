@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{dashboard_layout}">
+<head>
+<title>Admin Control</title>
+
+<script>
+	function user_alert(){
+	var answer = confirm("Are you sure=?");
+	return answer;
+	}
+</script>
+</head>
+<body>
+
+	<div layout:fragment="content" class="container">
+
+		<div class="row">
+			<div class="col-sm-5" th:if="${ update == null }">
+				<h3>Note Add</h3>
+				<form action="/noteAdd" method="post">
+					<div class="form-group">
+						<input name="title" type="text" placeholder="Title"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<input name="detail" type="text" placeholder="Detail"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<input name="date" type="date" placeholder="Date"
+							class="form-control" />
+					</div>
+					<button class="btn btn-success">Save</button>
+				</form>
+			</div>
+
+			<div class="col-sm-5" th:if="${ update != null }">
+				<h3>Note Update</h3>
+				<form action="/noteAdd" method="post">
+					<div class="form-group">
+						<input readonly="readonly" name="nid" type="text"
+							placeholder="Nid" class="form-control" th:value="${update.nid}" />
+					</div>
+
+					<div class="form-group">
+						<input name="title" type="text" placeholder="Title"
+							class="form-control" th:value="${update.title}" />
+					</div>
+					<div class="form-group">
+						<input name="detail" type="text" placeholder="Detail"
+							class="form-control" th:value="${update.detail}" />
+					</div>
+					<div class="form-group">
+						<input name="date" type="date" placeholder="Date"
+							class="form-control" th:value="${update.date}" />
+					</div>
+					<button class="btn btn-success">Update</button>
+				</form>
+			</div>
+
+			<div class="col-sm-7">
+				<h3>Note List</h3>
+
+				<form action="/searchData" method="post" class="form-row">
+
+					<div class="form-group col-md-10">
+						<input type="search" th:value="${searchTxt}" name="searchTxt"
+							class="form-control" placeholder="Search...">
+					</div>
+
+					<div class="form-group col-md-2">
+						<button type="submit" class="btn btn-dark">Search</button>
+					</div>
+
+				</form>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">Nid</th>
+							<th scope="col">Title</th>
+							<th scope="col">Detail</th>
+							<th scope="col">Date</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr th:if="${ls != null}" th:each="item, iter: ${ls}">
+							<th th:text="${item.nid}"></th>
+							<td th:text="${item.title}"></td>
+							<td th:text="${item.detail}"></td>
+							<td th:text="${item.date}"></td>
+							<td><a th:href="@{'/updateNote/'+${item.nid}}"
+								class="btn btn-success btn-sm ">Update</a> <a
+								onclick="return user_alert()"
+								th:href="@{'/deleteNote/'+${item.nid}}"
+								class="btn btn-danger btn-sm ">Delete</a></td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-5" th:if="${ prupdate == null }">
+				<h3>Product Add</h3>
+				<form action="/productAdd" method="post">
+					<div class="form-group">
+						<input name="prTitle" type="text" placeholder="Product Title"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<input name="prDetail" type="text" placeholder="Product Detail"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<input name="prPrice" type="number" min="0.00" max="10000.00"
+							step="0.01" placeholder="Product Price" class="form-control"
+							required />
+					</div>
+					<div class="form-group">
+						<input name="prImgUrl" type="url" placeholder="Product Image Url"
+							class="form-control" />
+					</div>
+					<button class="btn btn-success">Save</button>
+				</form>
+
+
+			</div>
+
+			<div class="col-sm-5" th:if="${ prupdate != null }">
+				<h3>Product Update</h3>
+				<form action="/productAdd" method="post">
+				<div class="form-group">
+						<input readonly="readonly" name="prid" type="text"
+							placeholder="Prid" class="form-control" th:value="${prupdate.prid}" />
+					</div>
+					<div class="form-group">
+						<input name="prTitle" type="text" placeholder="Product Title"
+							class="form-control" th:value="${prupdate.prTitle}" />
+					</div>
+					<div class="form-group">
+						<input name="prDetail" type="text" placeholder="Product Detail"
+							class="form-control" th:value="${prupdate.prDetail}" />
+					</div>
+					<div class="form-group">
+						<input name="prPrice" type="number" min="0.00" max="10000.00"
+							step="0.01" placeholder="Product Price" class="form-control"
+							th:value="${prupdate.prPrice}"
+							required />
+					</div>
+					<div class="form-group">
+						<input name="prImgUrl" type="url" placeholder="Product Image Url"
+							class="form-control" th:value="${prupdate.prImgUrl}" />
+					</div>
+					<button class="btn btn-success">Update</button>
+				</form>
+			</div>
+
+
+		</div>
+		<br>
+		<hr>
+		<br>
+		<div th:if="${productList != null}" class="row">
+			<div th:if="${productList != null}"
+				th:each="item, iter: ${productList}" class="col-sm-4">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" th:src="${item.getPrImgUrl}"
+						alt="Card image cap" />
+					<div class="card-body">
+						<h5 class="card-title" th:text="${item.getPrTitle}"></h5>
+						<p class="card-text" th:text="${item.getPrDetail}"></p>
+						<a th:href="@{'/updateProduct/'+${item.prid}}"
+							class="btn btn-success btn-sm ">Update</a> <a
+							onclick="return user_alert()"
+							th:href="@{'/deleteProduct/'+${item.prid}}"
+							class="btn btn-danger btn-sm ">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
