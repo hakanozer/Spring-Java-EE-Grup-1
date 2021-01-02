@@ -53,9 +53,7 @@ public class SecurityConfig implements Filter {
 				req.setAttribute("admin_info", adm);
 			}
 		}
-		
-		
-		
+
 		
 		chain.doFilter(req, res);
 	}

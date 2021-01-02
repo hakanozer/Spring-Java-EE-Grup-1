@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/site_layout}">
+<head>
+<title> User Control - Ajax </title>
+</head>
+<body>
+
+	<div layout:fragment="content" class="container">
+		
+		<div class="row">
+			<div class="col-sm-6">
+				<h3> User Insert </h3>
+				<div class="mb-3">
+					<input id="name" class="form-control" placeholder="name" />
+				</div>
+				
+				<div class="mb-3">
+					<input id="mail" class="form-control" placeholder="mail" />
+				</div>
+				
+				<div class="mb-3">
+					<input type="password" id="pass" class="form-control" placeholder="pass" />
+				</div>
+				
+				<div class="mb-3">
+					<select id="logo" class="form-select" aria-label="Default select example">
+					  <option selected>Selected Logo</option>
+					  <option value="1.png">Status -1</option>
+					  <option value="2.png">Status -2</option>
+					  <option value="3.png">Status -3</option>
+					</select>
+				</div>
+				
+				<button id="btnSend" class="btn btn-success" ><i class="far fa-save"></i> Send</button>
+			</div>
+			<div class="col-sm-6">
+				<h3> User List </h3>
+				<table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <th scope="col">UID</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Mail</th>
+				      <th scope="col">Logo</th>
+				      <th scope="col">Delete</th>
+				    </tr>
+				  </thead>
+				  <tbody id="rows"></tbody>
+				</table>
+							</div>
+		</div>
+		
+	</div>
+
+</body>
+</html>
