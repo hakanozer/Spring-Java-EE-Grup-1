@@ -74,6 +74,30 @@
 					<clearOutputDir>false</clearOutputDir>
 				</configuration>
 			</plugin>
+			
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>1.12</version>
+				<executions>
+			        <execution> 
+			            <id>myImport</id>
+			            <goals><goal>wsimport</goal></goals>
+			        </execution>
+			    </executions>
+				<configuration>
+					<packageName>com.works.ninedays.wsdl</packageName>
+					<keep>true</keep>
+					<sourceDestDir>${project.build.directory}/generated/src/main/java</sourceDestDir>
+					
+					<schemas>
+						<schema>
+							<url>http://localhost:8080/ws/countries.wsdl</url>
+						</schema>
+					</schemas>
+				</configuration>
+			</plugin>
 
 
 		</plugins>
