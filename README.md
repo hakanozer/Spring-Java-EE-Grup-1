@@ -1,9 +1,9 @@
 # Spring-Java-EE-Grup-1
 
-### Açıklama :fa-glass:
+### Açıklama 🧲:
 ###### Bu bölüm açıklama kısmıdır.
 ---
-### Yazılım Kaynakları :fa-file-text-o:
+### Yazılım Kaynakları 🛁 :
 ###### 1. Spring Boot
 ###### 2. Spring Jpa
 ###### 3. Spring Rest
@@ -11,7 +11,7 @@
 ###### 5. Spring Security
 
 
-### Proje Ekran Görüntüleri̇ :fa-picture-o:
+### Proje Ekran Görüntüleri̇ 🎀 :
 <p>
   
 <a href="https://github.com/hakanozer/Spring-Java-EE-Grup-1/blob/master/img/1.png" target="_blank">
