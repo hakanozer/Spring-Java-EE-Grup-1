@@ -4,11 +4,11 @@
 ###### Bu bölüm açıklama kısmıdır.
 ---
 ### Yazılım Kaynakları 🛁 :
-###### 1. Spring Boot
-###### 2. Spring Jpa
-###### 3. Spring Rest
-###### 4. Spring Mvc
-###### 5. Spring Security
+1. Spring Boot
+2. Spring Jpa
+3. Spring Rest
+4. Spring Mvc
+5. Spring Security
 
 
 ### Proje Ekran Görüntüleri̇ 🎀 :
