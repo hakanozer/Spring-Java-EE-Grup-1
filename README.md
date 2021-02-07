@@ -1,4 +1,4 @@
-# Spring-Java-EE-Grup-1
+# Spring Java EE Grup-1
 
 ### Açıklama 🧲:
 ###### Bu bölüm açıklama kısmıdır.
